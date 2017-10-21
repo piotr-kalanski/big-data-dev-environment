@@ -1,3 +1,13 @@
 ---
 - name: Install vim
   apt: name=vim state=latest
+
+- name: Install curl
+  apt: name=curl state=latest
+
+- name: Install jq
+  apt: name=jq state=latest
+
+- name: Install net-tools
+  apt: name=net-tools state=latest
+
