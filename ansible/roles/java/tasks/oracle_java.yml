@@ -20,6 +20,10 @@
   become_user: root
   become_method: sudo
 
+- name: Accept Java 8 License
+  become: yes
+  debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
+
 - name: Install Oracle Java 8
   apt: name={{item}}
   with_items:
