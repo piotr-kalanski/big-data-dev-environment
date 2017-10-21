@@ -1,8 +1,8 @@
 ---
 - name: Download Kibana package
 - get_url:
-    url=https://artifacts.elastic.co/downloads/kibana/kibana-5.6.3-amd64.deb
-    dest="/home/{{ ansible_env.USER }}/Downloads/kibana-5.6.3-amd64.deb"
+    url: "https://artifacts.elastic.co/downloads/kibana/kibana-5.6.3-amd64.deb"
+    dest: "/home/{{ ansible_env.USER }}/Downloads/kibana-5.6.3-amd64.deb"
 
 - name: Install Kibana package
   apt: deb="/home/{{ ansible_env.USER }}/Downloads/kibana-5.6.3-amd64.deb"

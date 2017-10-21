@@ -1,8 +1,8 @@
 ---
 - name: Download Elasticsearch package
 - get_url:
-    url=https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.6.3.deb
-    dest="/home/{{ ansible_env.USER }}/Downloads/elasticsearch-5.6.3.deb"
+    url: "https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.6.3.deb"
+    dest: "/home/{{ ansible_env.USER }}/Downloads/elasticsearch-5.6.3.deb"
 
 - name: Install Elasticsearch package
   apt: deb="/home/{{ ansible_env.USER }}/Downloads/elasticsearch-5.6.3.deb"

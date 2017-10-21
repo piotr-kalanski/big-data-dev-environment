@@ -1,9 +1,4 @@
 ---
-- shell: rm -rf /etc/apt/sources.list.d/.*webupd8team-java.list.*
-  become: yes
-  become_user: root
-  become_method: sudo
-
 - apt: update_cache=yes
   become: yes
   become_user: root
