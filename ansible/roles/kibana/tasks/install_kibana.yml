@@ -1,19 +1,11 @@
 ---
 - name: Download Kibana package
   get_url:
-    url: "https://artifacts.elastic.co/downloads/kibana/kibana-5.6.3-amd64.deb"
-    dest: "/home/{{ ansible_env.USER }}/Downloads/kibana-5.6.3-amd64.deb"
+    url: "https://artifacts.elastic.co/downloads/kibana/kibana-{{ KIBANA_VERSION }}-amd64.deb"
+    dest: "{{ DEB_PACKAGES_DOWNLOAD_DIR }}/kibana-{{ KIBANA_VERSION }}-amd64.deb"
 
 - name: Install Kibana package
-  apt: deb="/home/{{ ansible_env.USER }}/Downloads/kibana-5.6.3-amd64.deb"
-
-#- name: Kibana config file
-#  template:
-#    src=kibana.yml.j2
-#    dest=/etc/kibana/kibana.yml
-#    owner=root group=root mode=644
-#  become: yes
-#  notify: Restart Kibana
+  apt: deb="{{ DEB_PACKAGES_DOWNLOAD_DIR }}/kibana-{{ KIBANA_VERSION }}-amd64.deb"
 
 - name: Change Kibana host
   lineinfile:

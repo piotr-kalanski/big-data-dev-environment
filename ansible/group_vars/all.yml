@@ -1,0 +1,8 @@
+---
+# Directories:
+DEB_PACKAGES_DOWNLOAD_DIR: "/tmp"
+
+# Software versions:
+ES_VERSION: "5.6.3"
+KIBANA_VERSION: "5.6.3"
+CONFLUENT_VERSION: "3.3"

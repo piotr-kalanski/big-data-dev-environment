@@ -1,19 +1,11 @@
 ---
 - name: Download Elasticsearch package
   get_url:
-    url: "https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.6.3.deb"
-    dest: "/home/{{ ansible_env.USER }}/Downloads/elasticsearch-5.6.3.deb"
+    url: "https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{ ES_VERSION }}.deb"
+    dest: "{{ DEB_PACKAGES_DOWNLOAD_DIR }}/elasticsearch-{{ ES_VERSION }}.deb"
 
 - name: Install Elasticsearch package
-  apt: deb="/home/{{ ansible_env.USER }}/Downloads/elasticsearch-5.6.3.deb"
-
-#- name: ES config file
-#  template:
-#    src=elasticsearch.yml.j2
-#    dest=/etc/elasticsearch/elasticsearch.yml
-#    owner=root group=root mode=644
-#  become: yes
-#  notify: Restart elasticsearch
+  apt: deb="{{ DEB_PACKAGES_DOWNLOAD_DIR }}/elasticsearch-{{ ES_VERSION }}.deb"
 
 - name: Change Elasticsearch host
   lineinfile:

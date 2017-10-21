@@ -1,12 +1,12 @@
 ---
 - name: Confluent apt GPG key
   apt_key:
-    url='http://packages.confluent.io/deb/3.3/archive.key'
+    url="http://packages.confluent.io/deb/{{ CONFLUENT_VERSION }}/archive.key"
   become: yes
 
 - name: Confluent apt repo
   apt_repository:
-    repo="deb [arch=amd64] http://packages.confluent.io/deb/3.3 stable main"
+    repo="deb [arch=amd64] http://packages.confluent.io/deb/{{ CONFLUENT_VERSION }} stable main"
     update_cache=yes
   become: yes
 
