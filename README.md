@@ -78,6 +78,8 @@ Enter port forwarding rules:
 
 ![](images/virtualbox_port_forwarding_rules.png)
 
+where `10.0.2.15` is IP address of guest machine (virtual machine) that can be checked with `ifconfig` command.
+
 Go to virtual machine settings and configure network settings:
 
 ![](images/virtualbox_vm_setttings.png)

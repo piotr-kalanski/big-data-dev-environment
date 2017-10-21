@@ -1,0 +1,10 @@
+---
+# This Playbook would install all services for development environment
+
+- hosts: localhost
+  roles:
+  - java
+  - es
+  - kibana
+  - mysql
+  - confluent

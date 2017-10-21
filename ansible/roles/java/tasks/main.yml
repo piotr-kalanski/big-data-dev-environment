@@ -1,0 +1,6 @@
+---
+- include: oracle_java.yml
+- include: git.yml
+- include: maven.yml
+
+

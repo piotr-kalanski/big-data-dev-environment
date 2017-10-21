@@ -1,0 +1,6 @@
+---
+- name: Restart Kibana
+  monit:
+    name=kibana
+    state=restarted
+  become: yes

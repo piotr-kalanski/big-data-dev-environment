@@ -1,0 +1,18 @@
+---
+- name: Confluent apt GPG key
+  apt_key:
+    url='http://packages.confluent.io/deb/3.3/archive.key'
+  become: yes
+
+- name: Confluent apt repo
+  apt_repository:
+    repo="deb [arch=amd64] http://packages.confluent.io/deb/3.3 stable main"
+    update_cache=yes
+  become: yes
+
+- name: Install Confluent apt packages
+  apt: pkg=confluent-platform-oss-2.11 update_cache=yes state=latest
+  become: yes
+
+- name: Run confluent services
+  shell: confluent start kafka-rest

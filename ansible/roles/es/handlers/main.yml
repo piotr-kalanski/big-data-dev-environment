@@ -1,0 +1,6 @@
+---
+- name: Restart elasticsearch
+  monit:
+    name=elasticsearch
+    state=restarted
+  become: yes
