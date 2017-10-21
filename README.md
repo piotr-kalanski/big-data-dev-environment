@@ -8,6 +8,8 @@ Virtual machine with installed linux OS and multiple services (Kafka, Elasticsea
 
 All installed services are accessible from host machine.
 
+![](images/dev_environment_concept.png)
+
 # Instruction
 
 ## Download VirtualBox
@@ -43,11 +45,11 @@ Go to virtual machine settings and configure network settings:
 
 ## Install required software
 
-### Ansible
+### Install ansible
 
     sudo apt-get install ansible
 
-### Oracle Java 8
+### Install Oracle Java 8
     
     sudo add-apt-repository ppa:webupd8team/java
     
@@ -57,7 +59,7 @@ Go to virtual machine settings and configure network settings:
 
 based on: https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-get-on-ubuntu-16-04
 
-### MySQL
+### Install MySQL
 
     sudo apt-get update
     
@@ -65,7 +67,7 @@ based on: https://www.digitalocean.com/community/tutorials/how-to-install-java-w
 
 based on: https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-16-04 
 
-### Elasticsearch
+### Install Elasticsearch
 
     wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.6.3.deb
     
@@ -73,7 +75,7 @@ based on: https://www.digitalocean.com/community/tutorials/how-to-install-mysql-
     
 based on: https://www.elastic.co/downloads/elasticsearch 
 
-### Kibana
+### Install Kibana
 
     wget https://artifacts.elastic.co/downloads/kibana/kibana-5.6.3-amd64.deb
     
@@ -81,7 +83,7 @@ based on: https://www.elastic.co/downloads/elasticsearch
     
 based on: https://www.elastic.co/jp/downloads/kibana 
 
-### Confluent platform
+### Install Confluent platform
 
     wget -qO - http://packages.confluent.io/deb/3.3/archive.key | sudo apt-key add -
     
@@ -91,7 +93,7 @@ based on: https://www.elastic.co/jp/downloads/kibana
 
 based on: https://docs.confluent.io/current/installation.html#installation-apt     
 
-### Docker
+### Install Docker
 
     sudo apt-get update
     
@@ -108,7 +110,7 @@ based on: https://docs.confluent.io/current/installation.html#installation-apt
 
 based on: https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/ 
 
-### Kafka topics UI
+### Install Kafka topics UI
 
     docker pull landoop/kafka-topics-ui
     
@@ -116,7 +118,7 @@ based on: https://github.com/Landoop/kafka-topics-ui
 
 ## Configure services
 
-### Elasticsearch
+### Configure Elasticsearch
 
 Modify configuration file ``/etc/elasticsearch/elasticsearch.yml`` and set value of option `network.host`, so that Elasticsearch will listen on all interfaces:
 
@@ -124,7 +126,7 @@ Modify configuration file ``/etc/elasticsearch/elasticsearch.yml`` and set value
 
 based on: https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html 
 
-### Kibana
+### Configure Kibana
 
 Modify configuration file `/etc/kibana/kibana.yml` and set value of option `server.host`, so that Kibana will listen on all interfaces:
     
@@ -132,7 +134,7 @@ Modify configuration file `/etc/kibana/kibana.yml` and set value of option `serv
 
 based on: https://www.elastic.co/guide/en/kibana/current/settings.html 
 
-### Kafka
+### Configure Kafka
 
 Add new host to hosts file on host machine (e.g. Windows), by adding below line to ``C:\Windows\System32\drivers\etc``:
 
@@ -144,7 +146,7 @@ where `osboxes` is host name of guest machine (virtual machine) that can be chec
 
 based on: https://stackoverflow.com/questions/46074839/connect-to-kafka-inside-virtualbox
 
-### MySQL
+### Configure MySQL
 
 #### Modify listen host
 
@@ -163,25 +165,25 @@ where `developer` is name of user you should use for connecting with MySQL datab
 
 ## Start services
 
-### Elasticsearch
+### Start Elasticsearch
 
     service elasticsearch start
 
-### Kibana
+### Start Kibana
 
     service kibana start
 
-### Kafka ecosystem
+### Start Kafka ecosystem
 
     confluent start kafka-rest
 
-### MySQL
+### Start MySQL
 
 Should be started automatically, you can check it with:
 
     systemctl status mysql.service
 
-### Kafka topics UI
+### Start Kafka topics UI
 
     docker run --rm -it -p 8001:8000 \
                    -e "KAFKA_REST_PROXY_URL=http://localhost:8082" \
