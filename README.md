@@ -16,12 +16,51 @@ All installed services are accessible from host machine.
 
 Download VirtualBox from: https://www.virtualbox.org/wiki/Downloads 
 
-## Install VM with Ubuntu OS
+## Create and configure new VM with Ubuntu OS
 
-- Download Ubuntu image from http://www.osboxes.org/ubuntu/ 
-- Create new virtual machine using downloaded image
+### Create new virtual machine
 
-## Configure port forwarding for virtual machine
+Click new VM:
+
+![](images/virtualbox_new_vm.png)
+
+Enter below settings:
+
+![](images/virtualbox_new_vm_settings.png)
+
+![](images/virtualbox_new_vm_settings_disk.png)
+
+### Download Ubuntu ISO
+
+Go to website https://www.ubuntu.com/download/desktop and download Ubuntu ISO.
+
+![](images/download_ubuntu_iso.png)
+
+### Install Ubuntu OS on virtual machine
+
+Go to storage settings for newly created virtual machine:
+
+![](images/virtualbox_vm_storage_settings.png)
+
+choose download Ubuntu ISO image:
+
+![](images/virtualbox_vm_storage_settings_iso_image.png)
+
+after selecting result should look like:
+
+![](images/virtualbox_vm_storage_settings_selected_iso.png)
+
+Run virtual machine and start installation process:
+
+![](images/ubuntu_install_1.png)
+
+![](images/ubuntu_install_2.png)
+
+![](images/ubuntu_install_3.png)
+
+based on https://linus.nci.nih.gov/bdge/installUbuntu.html
+
+### Configure port forwarding for virtual machine
 
 Go to global settings:
 
@@ -44,6 +83,10 @@ Go to virtual machine settings and configure network settings:
 ![](images/virtualbox_vm_setttings.png)
 
 ## Install required software
+
+### Install git
+
+    sudo apt-get install git
 
 ### Install ansible
 
@@ -99,7 +142,7 @@ based on: https://docs.confluent.io/current/installation.html#installation-apt
     
     sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
     
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add –
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     
     sudo apt-key fingerprint 0EBFCD88
 
@@ -136,7 +179,7 @@ based on: https://www.elastic.co/guide/en/kibana/current/settings.html
 
 ### Configure Kafka
 
-Add new host to hosts file on host machine (e.g. Windows), by adding below line to ``C:\Windows\System32\drivers\etc``:
+Add new host to hosts file on host machine (e.g. Windows), by adding below line to ``C:\Windows\System32\drivers\etc\hosts``:
 
     127.0.0.1 osboxes
     
@@ -150,7 +193,7 @@ based on: https://stackoverflow.com/questions/46074839/connect-to-kafka-inside-v
 
 #### Modify listen host
 
-Edit configuration file `/etc/mysql/mysql.conf.d/msqld.cnf` and change line:
+Edit configuration file `/etc/mysql/mysql.conf.d/mysqld.cnf` and change line:
 
     bind-address = 0.0.0.0
 
@@ -158,8 +201,8 @@ Edit configuration file `/etc/mysql/mysql.conf.d/msqld.cnf` and change line:
 
 Execute in MySQL:
 
-    CREATE USER developer identified by ‘PASSWORD’;
-    GRANT ALL ON *.* to developer@’%’;
+    CREATE USER developer identified by 'PASSWORD';
+    GRANT ALL ON *.* to developer@'%';
 
 where `developer` is name of user you should use for connecting with MySQL database.
 
@@ -182,6 +225,10 @@ where `developer` is name of user you should use for connecting with MySQL datab
 Should be started automatically, you can check it with:
 
     systemctl status mysql.service
+
+You can start it manually:
+    
+    systemctl start mysql.service
 
 ### Start Kafka topics UI
 
