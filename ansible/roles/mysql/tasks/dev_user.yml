@@ -2,9 +2,8 @@
 - name: Create developer user
   mysql_user:
     login_user: root
-    login_password: 112358
+    login_password: {{MYSQL_ROOT_PASSWORD}}
     name: developer
     password: 112358
     priv: '*.*:ALL'
-    host_all: yes
     state: present

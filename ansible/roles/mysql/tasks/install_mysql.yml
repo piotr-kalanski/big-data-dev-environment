@@ -1,16 +1,12 @@
 ---
-- name: Install MySQL
-  apt: name=mysql state=latest
-
-- name: MySQL config file
-  template:
-    src=mysqld.cnf
-    dest=/etc/mysql/mysql.conf.d/mysqld.cnf
-    owner=root group=root mode=644
-  become: yes
+- name: Install MySQL packages
+  apt: name={{ item }} state=installed
+  with_items:
+    - mysql-server
+    - python-mysqldb
 
 - name: Change MySQL bind-address
   lineinfile:
-    path: /etc/mysql/mysql.conf.d/mysqld.cnf
-    regexp: 'bind-address'
-    line: 'bind-address = 0.0.0.0'
+    dest: "/etc/mysql/mysql.conf.d/mysqld.cnf"
+    regexp: "bind-address"
+    line: "bind-address = 0.0.0.0"
