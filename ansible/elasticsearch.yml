@@ -1,0 +1,8 @@
+---
+# This Playbook would install MySQL for development environment at localhost
+
+- hosts: localhost
+  gather_facts: yes
+  roles:
+    - es
+    - kibana
