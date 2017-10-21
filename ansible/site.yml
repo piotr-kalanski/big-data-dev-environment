@@ -1,11 +1,12 @@
 ---
-# This Playbook would install all services for development environment
+# This Playbook would install all services for development environment at localhost
 
 - hosts: localhost
+  gather_facts: yes
   roles:
-  - linux_tools
-  - java
-  - es
-  - kibana
-  - mysql
-  - confluent
+    - linux_tools
+    - java
+    - es
+    - kibana
+    - confluent
+    - mysql
