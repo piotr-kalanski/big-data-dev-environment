@@ -1,2 +1,3 @@
 ---
 - include: install_es.yml
+- include: configure_es.yml

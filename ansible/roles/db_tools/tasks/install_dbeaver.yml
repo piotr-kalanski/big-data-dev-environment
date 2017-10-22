@@ -1,0 +1,9 @@
+---
+- name: Download dbeaver package
+  get_url:
+    url: "https://dbeaver.jkiss.org/files/dbeaver-ce_latest_amd64.deb"
+    dest: "{{ DEB_PACKAGES_DOWNLOAD_DIR }}/dbeaver-ce_latest_amd64.deb"
+
+- name: Install dbeaver package
+  apt: deb="{{ DEB_PACKAGES_DOWNLOAD_DIR }}/dbeaver-ce_latest_amd64.deb"
+

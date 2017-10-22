@@ -58,6 +58,8 @@ Run virtual machine and start installation process:
 
 ![](images/ubuntu_install_3.png)
 
+![](images/ubuntu_install_4.png)
+
 based on https://linus.nci.nih.gov/bdge/installUbuntu.html
 
 ### Configure port forwarding for virtual machine

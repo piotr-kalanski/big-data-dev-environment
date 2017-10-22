@@ -6,11 +6,3 @@
 
 - name: Install Elasticsearch package
   apt: deb="{{ DEB_PACKAGES_DOWNLOAD_DIR }}/elasticsearch-{{ ES_VERSION }}.deb"
-
-- name: Change Elasticsearch host
-  lineinfile:
-    dest: "/etc/elasticsearch/elasticsearch.yml"
-    regexp: "network.host"
-    line: "network.host: 0.0.0.0"
-  become: yes
-  notify: Restart elasticsearch
