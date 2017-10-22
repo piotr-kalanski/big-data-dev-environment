@@ -1,6 +1,6 @@
 # Manual instruction for installing software at development environment
 
-Please note that you can instead install and configure services using ansible which is described in [ansible] folder. 
+Please note that you can instead install and configure services using ansible which is described in [ansible](/ansible) folder. 
 
 ## Install required software
 
