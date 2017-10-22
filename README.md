@@ -58,6 +58,8 @@ Run virtual machine and start installation process:
 
 ![](images/ubuntu_install_3.png)
 
+![](images/ubuntu_install_4.png)
+
 based on https://linus.nci.nih.gov/bdge/installUbuntu.html
 
 ### Configure port forwarding for virtual machine
@@ -87,5 +89,5 @@ Go to virtual machine settings and configure network settings:
 ## Install software and configure services 
 
 There are two options for installing and configuring services:
-- automated way - using ansible playbook which is documented in [ansible] folder
-- manually installing and configuring services which is documented in [manual] folder
+- automated way - using ansible playbook which is documented in [ansible](/ansible) folder
+- manually installing and configuring services which is documented in [manual](/manual) folder

@@ -5,3 +5,4 @@
   gather_facts: yes
   roles:
     - mysql
+    - db_tools

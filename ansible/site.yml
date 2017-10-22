@@ -10,3 +10,4 @@
     - kibana
     - confluent
     - mysql
+    - db_tools

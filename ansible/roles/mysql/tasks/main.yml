@@ -1,3 +1,4 @@
 ---
 - include: install_mysql.yml
-- include: dev_user.yml
+- include: configure_mysql.yml
+- include: create_dev_user.yml

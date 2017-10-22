@@ -1,6 +1,6 @@
 # Manual instruction for installing software at development environment
 
-Please note that you can instead install and configure services using ansible which is described in [ansible] folder. 
+Please note that you can instead install and configure services using ansible which is described in [ansible](/ansible) folder. 
 
 ## Install required software
 
@@ -85,7 +85,7 @@ based on: https://github.com/Landoop/kafka-topics-ui
 
 Modify configuration file ``/etc/elasticsearch/elasticsearch.yml`` and set value of option `network.host`, so that Elasticsearch will listen on all interfaces:
 
-    network.host = [_local_, _site_] 
+    network.host: 0.0.0.0 
 
 based on: https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html 
 
@@ -93,7 +93,7 @@ based on: https://www.elastic.co/guide/en/elasticsearch/reference/current/module
 
 Modify configuration file `/etc/kibana/kibana.yml` and set value of option `server.host`, so that Kibana will listen on all interfaces:
     
-    server.host = 0.0.0.0
+    server.host: 0.0.0.0
 
 based on: https://www.elastic.co/guide/en/kibana/current/settings.html 
 

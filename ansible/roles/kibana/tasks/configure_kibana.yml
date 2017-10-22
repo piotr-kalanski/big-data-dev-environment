@@ -1,0 +1,8 @@
+---
+- name: Change Kibana host
+  lineinfile:
+    dest: /etc/kibana/kibana.yml
+    regexp: "server.host"
+    line: "server.host: 0.0.0.0"
+  become: yes
+  notify: Restart Kibana
