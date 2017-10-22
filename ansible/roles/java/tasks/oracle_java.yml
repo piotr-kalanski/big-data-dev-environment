@@ -1,0 +1,28 @@
+---
+- apt: update_cache=yes
+  become: yes
+  become_user: root
+  become_method: sudo
+
+- name: Add Oracle Java Repository
+  apt_repository: repo='ppa:webupd8team/java'
+  become: yes
+  become_user: root
+  become_method: sudo
+
+- apt: update_cache=yes
+  become: yes
+  become_user: root
+  become_method: sudo
+
+- name: Accept Java 8 License
+  become: yes
+  debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
+
+- name: Install Oracle Java 8
+  apt: name={{item}}
+  with_items:
+    - oracle-java8-installer
+  become: yes
+  become_user: root
+  become_method: sudo

@@ -1,0 +1,16 @@
+---
+- name: Download Kibana package
+  get_url:
+    url: "https://artifacts.elastic.co/downloads/kibana/kibana-{{ KIBANA_VERSION }}-amd64.deb"
+    dest: "{{ DEB_PACKAGES_DOWNLOAD_DIR }}/kibana-{{ KIBANA_VERSION }}-amd64.deb"
+
+- name: Install Kibana package
+  apt: deb="{{ DEB_PACKAGES_DOWNLOAD_DIR }}/kibana-{{ KIBANA_VERSION }}-amd64.deb"
+
+- name: Change Kibana host
+  lineinfile:
+    dest: /etc/kibana/kibana.yml
+    regexp: "server.host"
+    line: "server.host: 0.0.0.0"
+  become: yes
+  notify: Restart Kibana

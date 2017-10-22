@@ -1,0 +1,10 @@
+---
+- name: Create developer user
+  mysql_user:
+    name: developer
+    password: '112358'
+    priv: '*.*:ALL'
+    state: present
+    host: '%'
+    login_user: root
+    login_password: "{{ MYSQL_ROOT_PASSWORD }}"
